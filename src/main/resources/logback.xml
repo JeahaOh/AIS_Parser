@@ -1,68 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-
-  <!-- Appenders -->
-  <appender name="STDOUT"
-    class="ch.qos.logback.core.ConsoleAppender">
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
     <encoder>
       <pattern>%d{HH:mm:ss} [ LB.STDOUT %c ] %5p - %msg%n</pattern>
     </encoder>
   </appender>
 
-  <appender name="console"
-    class="ch.qos.logback.core.ConsoleAppender">
+  <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
     <encoder>
       <pattern>%d{HH:mm:ss} [ %c{2} . %M %L ] %5p : %m%n</pattern>
     </encoder>
   </appender>
 
-  <appender name="JDBC_SQL"
-    class="ch.qos.logback.core.ConsoleAppender">
+  <appender name="JDBC_SQL" class="ch.qos.logback.core.ConsoleAppender">
     <encoder>
       <pattern>%n SQL ONLY : %5m%n</pattern>
     </encoder>
   </appender>
 
-  <appender name="JDBC_RST_TBL"
-    class="ch.qos.logback.core.ConsoleAppender">
+  <appender name="JDBC_RST_TBL" class="ch.qos.logback.core.ConsoleAppender">
     <encoder>
       <pattern>%n RESULT SET TABLE : %5m%n</pattern>
     </encoder>
   </appender>
 
-  <appender name="JDBCCONSOLE"
-    class="ch.qos.logback.core.ConsoleAppender">
+  <appender name="JDBCCONSOLE" class="ch.qos.logback.core.ConsoleAppender">
     <encoder>
       <pattern>JDBC WARN : %d{HH:mm:ss} %5p [%c{2}] %M %L : %m%n</pattern>
     </encoder>
   </appender>
 
 
-
-  <!-- 3rdparty Loggers -->
-  <logger name="org.springframework" level="ERROR"
-    additivity="false">
-    <appender-ref ref="console" />
-  </logger>
-  <!-- INFO -->
-  <logger name="org.springframework.web" level="INFO"
-    additivity="false">
-    <appender-ref ref="console" />
-  </logger>
-
   <logger name="ais.parser" level="DEBUG" additivity="false">
     <appender-ref ref="console" />
   </logger>
 
-  <!-- ERR -->
-  
-  <Logger name="org.apache.commons" level="ERROR"
-    additivity="false">
-    <appender-ref ref="console" />
-  </Logger>
-
-  <logger name="org.mybatis" level="DEBUG" />
-  <Logger name="java.sql" level="DEBUG" />
+  <logger name="org.mybatis" level="OFF" />
+  <Logger name="java.sql" level="OFF" />
 
   <!-- debug -->
   <Logger name="jdbc.sqlonly" level="DEBUG" additivity="FALSE">
@@ -74,26 +48,25 @@
     <appender-ref ref="JDBC_RST_TBL" />
   </Logger>
 
-  <!-- off -->
   <!-- warn -->
-  <Logger name="log4jdbc" level="DEBUG" additivity="FALSE">
+  <Logger name="log4jdbc" level="WARN" additivity="FALSE">
     <appender-ref ref="JDBCCONSOLE" />
   </Logger>
-  <Logger name="jdbc.sqltiming" level="DEBUG" additivity="FALSE">
+  <Logger name="jdbc.sqltiming" level="WARN" additivity="FALSE">
     <appender-ref ref="JDBCCONSOLE" />
   </Logger>
-  <Logger name="jdbc.audit" level="DEBUG" additivity="FALSE">
+  <Logger name="jdbc.audit" level="WARN" additivity="FALSE">
     <appender-ref ref="JDBCCONSOLE" />
   </Logger>
-  <Logger name="jdbc.connection" level="DEBUG" additivity="FALSE">
+  <Logger name="jdbc.connection" level="WARN" additivity="FALSE">
     <appender-ref ref="JDBCCONSOLE" />
   </Logger>
-  <Logger name="jdbc.resultset" level="DEBUG" additivity="FALSE">
+  <Logger name="jdbc.resultset" level="WARN" additivity="FALSE">
     <appender-ref ref="JDBCCONSOLE" />
   </Logger>
 
 
-  <logger name="ch.qos.logback" level="DEBUG" additivity="false">
+  <logger name="ch.qos.logback" level="ERROR" additivity="false">
     <appender-ref ref="STDOUT" />
   </logger>
 
