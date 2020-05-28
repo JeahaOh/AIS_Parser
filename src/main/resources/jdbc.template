@@ -1,0 +1,4 @@
+driver=net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+url=jdbc:log4jdbc:postgresql://{IP}:{PORT}/{DATABASE}
+username={USER}
+password={PASSWORD}

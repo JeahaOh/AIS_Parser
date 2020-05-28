@@ -30,11 +30,36 @@ repositories {
 }
 
 dependencies {
+
+    // https://mvnrepository.com/artifact/ch.qos.logback/logback-classic
+testCompile group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
+
+// https://mvnrepository.com/artifact/ch.qos.logback/logback-core
+compile group: 'ch.qos.logback', name: 'logback-core', version: '1.2.3'
+// https://mvnrepository.com/artifact/org.slf4j/slf4j-api
+compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.26'
+
+
+// https://mvnrepository.com/artifact/org.bgee.log4jdbc-log4j2/log4jdbc-log4j2-jdbc4.1
+compile group: 'org.bgee.log4jdbc-log4j2', name: 'log4jdbc-log4j2-jdbc4.1', version: '1.16'
+
+
+
     // https://mvnrepository.com/artifact/org.mybatis/mybatis
-    compile group: 'org.mybatis', name: 'mybatis', version: '3.4.6'
+    compile group: 'org.mybatis', name: 'mybatis', version: '3.4.1'
 
     // https://mvnrepository.com/artifact/org.postgresql/postgresql
     compile group: 'org.postgresql', name: 'postgresql', version: '42.2.5'
+
+    // https://mvnrepository.com/artifact/commons-dbcp/commons-dbcp
+compile group: 'commons-dbcp', name: 'commons-dbcp', version: '1.4'
+
+
+    // https://mvnrepository.com/artifact/commons-io/commons-io
+    compile group: 'commons-io', name: 'commons-io', version: '2.4'
+
+
+    
 
     // https://mvnrepository.com/artifact/net.sf.sevenzipjbinding/sevenzipjbinding
     compile group: 'net.sf.sevenzipjbinding', name: 'sevenzipjbinding', version: '9.20-2.00beta'
