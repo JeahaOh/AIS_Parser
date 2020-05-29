@@ -7,6 +7,34 @@
 >
 <mapper namespace="SQL">
   <select id="getServerTime" resultType="String">
+    /* DB SERVER TIME */
     SELECT NOW() AS NOW
   </select>
+  
+  <select id="isExistTable" parameterType="TableName" resultType="Boolean">
+  /* 테이블 유무 확인 */
+    SELECT
+      (CASE
+        WHEN COUNT(*) = 1 THEN TRUE 
+        ELSE FALSE
+      END) AS ISEXIST
+    FROM
+      PG_TABLES TABS
+    WHERE
+      TABS.SCHEMANAME = 'ais'
+    AND 
+      TABS.TABLENAME = #{tableName}
+  </select>
+  
+  <insert id="createTable" parameterType="TableName">
+  /* 테이블 생성 IF NOT EXISTS */
+    CREATE TABLE IF NOT EXISTS ${createName}
+    ( LIKE AIS.MSG_BSID_DATE INCLUDING ALL )
+  </insert>
+  
+  <insert id="insertMsg" parameterType="Msg">
+INSERT INTO #{createTableName} (msg_id, mmsi, chnnl, rcrd_time, geom, geom_lo, geom_la, geom_al, cog, sog, hdg, rot) VALUES
+( ${msg_id}, ${mmsi}, ${chnnl}, TO_TIMESTAMP( '${rcrd_time}', 'YYYYMMDDHH24MISS' )::timestamp, st_geomfromtext('SRID=4326;${geom}'), ${geom_lo}, ${geom_la}, ${geom_al}, ${cog}, ${sog}, ${hdg}, ${rot})
+  </insert>
+  
 </mapper>

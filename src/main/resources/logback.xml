@@ -71,7 +71,7 @@
   </logger>
 
   <!-- Root Logger -->
-  <Root level="DEBUG">
+  <Root level="TRACE">
     <appender-ref ref="STDOUT" />
   </Root>
 
