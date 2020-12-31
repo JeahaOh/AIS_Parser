@@ -40,7 +40,7 @@ const insertMsg = msg => {
   const existQuery = `SELECT (CASE WHEN COUNT(*) = 1 THEN TRUE ELSE FALSE END) AS ISEXIST FROM PG_TABLES AS TABS WHERE TABS.SCHEMANAME = 'ais' AND  TABS.TABLENAME = \'${tableName}\'`;
   const createQuery = 'CREATE TABLE IF NOT EXISTS ' + createTableName + ' ( LIKE AIS.MSG_BSID_DATE INCLUDING ALL )';
   const insertQuery = `INSERT INTO ${createTableName} (msg_id, mmsi, chnnl, rcrd_time, geom, geom_lo, geom_la, geom_al, cog, sog, hdg, rot) VALUES
-  ( ${msg_id}, ${mmsi}, '${chnnl}', TO_TIMESTAMP( '${rcrd_time}', 'YYYYMMDDHH24MISS' )::timestamp, st_geomfromtext('SRID=4326;${geom}'), ${geom_lo}, ${geom_la}, ${geom_al}, ${cog}, ${sog}, ${hdg}, ${rot});`;
+  ( ${msg_id}, ${mmsi}, '${chnnl}', TO_TIMESTAMP( '${rcrd_time}', 'YYYYMMDDHH24MISS' )::timestamp, st_geomfromtext('SRID=4326;${geom}'), ${geom_lo}, ${geom_la}, ${geom_al}, ${cog}, ${sog}, ${hdg}, ${rot})`;
 
   const existCheck = () => new Promise((resolve, reject) => {
     //  테이블 있는지 확인.
